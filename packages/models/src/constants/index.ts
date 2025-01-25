@@ -157,6 +157,9 @@ export enum MainChannels {
     START_DEPLOYMENT = 'start-deployment',
     DEPLOY_STATE_CHANGED = 'deploy-state-changed',
     UNPUBLISH_HOSTING_ENV = 'unpublish-hosting-env',
+
+    //Pages
+    SCAN_PAGES = 'pages:scan',
 }
 
 export enum Links {

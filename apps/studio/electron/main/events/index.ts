@@ -13,6 +13,7 @@ import { listenForCreateMessages } from './create';
 import { listenForHostingMessages } from './hosting';
 import { listenForRunMessages } from './run';
 import { listenForStorageMessages } from './storage';
+import { setupPagesHandler } from '../pages';
 
 export function listenForIpcMessages() {
     listenForGeneralMessages();
@@ -24,6 +25,7 @@ export function listenForIpcMessages() {
     listenForChatMessages();
     listenForRunMessages();
     listenForHostingMessages();
+    setupPagesHandler();
 }
 
 export function removeIpcListeners() {

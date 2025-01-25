@@ -21,6 +21,7 @@ import { ProjectInfoManager } from './projectinfo';
 import { StyleManager } from './style';
 import { TextEditingManager } from './text';
 import { WebviewManager } from './webview';
+import { PagesManager } from './pages';
 
 export class EditorEngine {
     private editorMode: EditorMode = EditorMode.DESIGN;
@@ -30,6 +31,7 @@ export class EditorEngine {
     private webviewManager: WebviewManager;
     private overlayManager: OverlayManager;
     private codeManager: CodeManager;
+    private pagesManager: PagesManager;
 
     private astManager: AstManager = new AstManager(this);
     private historyManager: HistoryManager = new HistoryManager(this);
@@ -51,6 +53,7 @@ export class EditorEngine {
         this.webviewManager = new WebviewManager(this, this.projectsManager);
         this.overlayManager = new OverlayManager(this);
         this.codeManager = new CodeManager(this, this.projectsManager);
+        this.pagesManager = new PagesManager(this);
     }
 
     get elements() {
@@ -116,6 +119,14 @@ export class EditorEngine {
 
     set editPanelTab(tab: EditorTabValue) {
         this.editorPanelTab = tab;
+    }
+
+    get pages() {
+        return this.pagesManager;
+    }
+
+    get projectFolderPath(): string | undefined {
+        return this.projectsManager.project?.folderPath;
     }
 
     dispose() {
